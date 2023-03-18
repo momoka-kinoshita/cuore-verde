@@ -1,0 +1,18 @@
+<h1>id: <%= @post.id %> の投稿編集ページ</h1>
+
+<%= form_with(model: @post) do |f| %>
+  
+  <div class="mb-3">
+    <%= f.label :maintitle, 'メインタイトル' %>
+    <%= f.text_field :maintitle, class: 'form-control' %>
+  </div>
+  
+  <div class="mb-3">
+    <%= f.label :memo, 'メモ' %>
+    <%= f.text_field :memo, class: 'form-control' %>
+  </div>
+
+  <%= f.submit '完了' %>
+<% end %>
+
+<%= link_to '一覧に戻る', root_path %>
