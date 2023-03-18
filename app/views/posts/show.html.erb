@@ -2,6 +2,7 @@
 
 <%= link_to @post.user.name, user_path(@post.user), class: "text-decoration-none" %> <span class="text-muted">posted at <%= @post.created_at %></span>
 
+<video src="<%= url_for(@post.video.attachment) %>" type="video/mp4" controls></video>
 <p><%= @post.maintitle %></p>
 <p><%= @post.memo %></p>
 <div>
@@ -9,6 +10,7 @@
       <%= link_to 'この投稿を編集する', edit_post_path(@post) %>
       <%= link_to "削除", @post, method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-danger btn-sm' %>
     <% end %>
+    <%= render 'favorites/favorite_button', post: @post %>
 </div>
 
 <%= link_to '一覧に戻る', root_path %>

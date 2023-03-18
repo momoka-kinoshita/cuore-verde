@@ -7,6 +7,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts.order(id: :desc)
+    counts(@user)
   end
 
   def new
@@ -29,6 +31,12 @@ class UsersController < ApplicationController
   end
 
   def update
+  end
+  
+  def likes
+    @user = User.find(params[:id])
+    @likes = @user.likings
+    counts(@user)
   end
   
   

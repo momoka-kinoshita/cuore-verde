@@ -4,4 +4,7 @@ class Post < ApplicationRecord
   
   validates :maintitle, presence: true, length: { maximum: 255 }
   validates :memo, presence: true, length: { maximum: 255 }
+  
+  has_many :favorites, dependent: :destroy
+  has_many :likers, through: :favorites, source: :user
 end

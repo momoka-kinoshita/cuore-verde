@@ -13,11 +13,6 @@
             <p><%= post.maintitle %><p>
             <p><%= post.memo %></p>
           </div>
-          <div>
-            <% if current_user == post.user %>
-              <%= link_to "削除", post, method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-danger btn-sm' %>
-            <% end %>
-          </div>
         </div>
       </li>
     <% end %>

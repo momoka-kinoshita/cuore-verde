@@ -7,4 +7,20 @@ class User < ApplicationRecord
   has_secure_password
   
   has_many :posts
+  
+  has_many :favorites, dependent: :destroy
+  has_many :likings, through: :favorites, source: :post
+  
+  def favorite(post)
+    self.favorites.find_or_create_by(post_id: post.id)
+  end
+  
+  def unfavorite(post)
+    favorite = self.favorites.find_by(post_id: post.id)
+    favorite.destroy if favorite
+  end
+  
+  def liking?(post)
+    self.likings.include?(post)
+  end
 end
