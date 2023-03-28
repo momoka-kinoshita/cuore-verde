@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   
   def index
+    @posts = Post.order(id: :desc)
   end
 
   def show
@@ -12,6 +13,7 @@ class PostsController < ApplicationController
 
   def new
     @post = current_user.posts.build  # form_with 用
+    @tag = Tag.new # タグ追加機能テスト
   end
 
   def create
@@ -54,8 +56,7 @@ class PostsController < ApplicationController
   private
   
   def post_params
-    puts "UUUUUUUUUUUUUUUUUUU"
-    params.require(:post).permit(:maintitle, :memo, :video)
+    params.require(:post).permit(:maintitle, :memo, :video, tag_ids: [])
   end
   
   def correct_user

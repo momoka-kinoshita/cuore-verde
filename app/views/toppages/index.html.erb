@@ -1,14 +1,270 @@
 <% if logged_in? %>
-  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+
+  <p>
+    <a class="btn btn-outline-success" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      タグ検索
+    </a>
+  </p>
+  <div class="collapse mb-3" id="collapseExample">
+    <div class="card card-body">
+      <%= form_with url: root_path, method: :get do |f| %>
+        <p><%= f.label :tag, 'タグ検索' %></p>
+        
+        <div class="mb-3">
+          <%= f.submit '検索' %>
+        </div>
+        
+        <p>
+          <a class="btn btn-link" data-bs-toggle="collapse" href="#collapseExample-1" role="button" aria-expanded="false" aria-controls="collapseExample-1">
+            ポジション
+          </a>
+        </p>
+        <div class="collapse" id="collapseExample-1">
+          <div class="card card-body">
+            <div>
+              <%= f.collection_check_boxes(:tag_id, Tag.where(category: 'ポジション'), :id, :name, {include_hidden: false, multiple: true }) do |tag| %> 
+                <%= tag.label do %>
+                  <%= tag.check_box %>
+                  <%= tag.text %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        
+        <p class="mt-3">
+          <a class="btn btn-link" data-bs-toggle="collapse" href="#collapseExample-2" role="button" aria-expanded="false" aria-controls="collapseExample-2">
+            場面
+          </a>
+        </p>
+        <div class="collapse" id="collapseExample-2">
+          <div class="card card-body">
+            <div>
+              <%= f.collection_check_boxes(:tag_id, Tag.where(category: '場面'), :id, :name, {include_hidden: false, multiple: true }) do |tag| %> 
+                <%= tag.label do %>
+                  <%= tag.check_box %>
+                  <%= tag.text %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        
+        <p class="mt-3">
+          <a class="btn btn-link" data-bs-toggle="collapse" href="#collapseExample-12" role="button" aria-expanded="false" aria-controls="collapseExample-12">
+            エリア
+          </a>
+        </p>
+        <div class="collapse" id="collapseExample-12">
+          <div class="card card-body">
+            <div>
+              <div class="row">
+                <%= image_tag '/area.png', class: "col-sm-6" %>
+                <div class="col-sm-6">
+                  <%= f.collection_check_boxes(:tag_id, Tag.where(category: 'エリア'), :id, :name, {include_hidden: false, multiple: true }) do |tag| %> 
+                    <%= tag.label do %>
+                      <%= tag.check_box %>
+                      <%= tag.text %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <p class="mt-3">
+          <a class="btn btn-link" data-bs-toggle="collapse" href="#collapseExample-3" role="button" aria-expanded="false" aria-controls="collapseExample-3">
+            部位
+          </a>
+        </p>
+        <div class="collapse" id="collapseExample-3">
+          <div class="card card-body">
+            <div>
+              <%= f.collection_check_boxes(:tag_id, Tag.where(category: '部位'), :id, :name, {include_hidden: false, multiple: true }) do |tag| %> 
+                <%= tag.label do %>
+                  <%= tag.check_box %>
+                  <%= tag.text %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        
+        <p class="mt-3">
+          <a class="btn btn-link" data-bs-toggle="collapse" href="#collapseExample-4" role="button" aria-expanded="false" aria-controls="collapseExample-4">
+            その他
+          </a>
+        </p>
+        <div class="collapse" id="collapseExample-4">
+          <div class="card card-body">
+            <div>
+              <%= f.collection_check_boxes(:tag_id, Tag.where(category: 'その他'), :id, :name, {include_hidden: false, multiple: true }) do |tag| %> 
+                <%= tag.label do %>
+                  <%= tag.check_box %>
+                  <%= tag.text %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        
+        <p class="mt-3">
+          <a class="btn btn-link" data-bs-toggle="collapse" href="#collapseExample-5" role="button" aria-expanded="false" aria-controls="collapseExample-5">
+            技術
+          </a>
+        </p>
+        <div class="collapse" id="collapseExample-5">
+          <div class="card card-body">
+            <div>
+              <%= f.collection_check_boxes(:tag_id, Tag.where(category: '技術'), :id, :name, {include_hidden: false, multiple: true }) do |tag| %> 
+                <%= tag.label do %>
+                  <%= tag.check_box %>
+                  <%= tag.text %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        
+        <p class="mt-3">
+          <a class="btn btn-link" data-bs-toggle="collapse" href="#collapseExample-6" role="button" aria-expanded="false" aria-controls="collapseExample-6">
+            プレー
+          </a>
+        </p>
+        <div class="collapse" id="collapseExample-6">
+          <div class="card card-body">
+            <div>
+              <%= f.collection_check_boxes(:tag_id, Tag.where(category: 'プレー'), :id, :name, {include_hidden: false, multiple: true }) do |tag| %> 
+                <%= tag.label do %>
+                  <%= tag.check_box %>
+                  <%= tag.text %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        
+        <p class="mt-3">
+          <a class="btn btn-link" data-bs-toggle="collapse" href="#collapseExample-7" role="button" aria-expanded="false" aria-controls="collapseExample-7">
+            キック
+          </a>
+        </p>
+        <div class="collapse" id="collapseExample-7">
+          <div class="card card-body">
+            <div>
+              <%= f.collection_check_boxes(:tag_id, Tag.where(category: 'キック'), :id, :name, {include_hidden: false, multiple: true }) do |tag| %> 
+                <%= tag.label do %>
+                  <%= tag.check_box %>
+                  <%= tag.text %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        
+        <p class="mt-3">
+          <a class="btn btn-link" data-bs-toggle="collapse" href="#collapseExample-8" role="button" aria-expanded="false" aria-controls="collapseExample-8">
+            シュート
+          </a>
+        </p>
+        <div class="collapse" id="collapseExample-8">
+          <div class="card card-body">
+            <div>
+              <%= f.collection_check_boxes(:tag_id, Tag.where(category: 'シュート'), :id, :name, {include_hidden: false, multiple: true }) do |tag| %> 
+                <%= tag.label do %>
+                  <%= tag.check_box %>
+                  <%= tag.text %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        
+        <p class="mt-3">
+          <a class="btn btn-link" data-bs-toggle="collapse" href="#collapseExample-9" role="button" aria-expanded="false" aria-controls="collapseExample-9">
+            クロス
+          </a>
+        </p>
+        <div class="collapse" id="collapseExample-9">
+          <div class="card card-body">
+            <div>
+              <%= f.collection_check_boxes(:tag_id, Tag.where(category: 'クロス'), :id, :name, {include_hidden: false, multiple: true }) do |tag| %> 
+                <%= tag.label do %>
+                  <%= tag.check_box %>
+                  <%= tag.text %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        
+        <p class="mt-3">
+          <a class="btn btn-link" data-bs-toggle="collapse" href="#collapseExample-10" role="button" aria-expanded="false" aria-controls="collapseExample-10">
+            パス
+          </a>
+        </p>
+        <div class="collapse" id="collapseExample-10">
+          <div class="card card-body">
+            <div>
+              <%= f.collection_check_boxes(:tag_id, Tag.where(category: 'パス'), :id, :name, {include_hidden: false, multiple: true }) do |tag| %> 
+                <%= tag.label do %>
+                  <%= tag.check_box %>
+                  <%= tag.text %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        
+        <p class="mt-3">
+          <a class="btn btn-link" data-bs-toggle="collapse" href="#collapseExample-11" role="button" aria-expanded="false" aria-controls="collapseExample-11">
+            守備
+          </a>
+        </p>
+        <div class="collapse" id="collapseExample-11">
+          <div class="card card-body">
+            <div>
+              <%= f.collection_check_boxes(:tag_id, Tag.where(category: '守備'), :id, :name, {include_hidden: false, multiple: true }) do |tag| %> 
+                <%= tag.label do %>
+                  <%= tag.check_box %>
+                  <%= tag.text %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        
+      <% end %>
+    </div>
+  </div>
+　
+　
+  
+  <span>【検索タグ】</span>
+  <% if @tags.present? %>
+    <% @tags.each do |tag| %>
+      <%= tag.name %>
+    <% end %>
+  <% end %>
+  
+  <% if @posts.blank? %>
+    <p>条件に当てはまる投稿がありません</p>
+  <% end %>
+
   <div>
     <%= render 'posts/posts', posts: @posts %>
   </div>
 <% else %>
-  <div class="bg-secondary p-3 p-sm-5 my-4 rounded">
+  <div class="bg-dark p-3 p-sm-5 my-4 rounded">
     <div class="text-center text-white">
       <h1>Welcome to the CuoreVerde</h1>
-      <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-lg btn-primary' %>
-      <%= link_to 'ログイン', login_path, class: 'btn btn-lg btn-primary' %>
+      <div class="mt-3">
+        <%= link_to '新規登録', signup_path, class: 'btn btn-lg btn-outline-light' %>
+      </div>
+      <div class="mt-3">
+      <%= link_to 'ログイン', login_path, class: 'btn btn-lg btn-outline-light' %>
+      </div>
     </div>
   </div>
 <% end %>

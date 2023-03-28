@@ -1,0 +1,11 @@
+<% if @posts.any? %>
+  <ul class="list-unstyled mt-2">
+    <% @posts.each do |post| %>
+
+        <div>
+          <video src="<%= url_for(post.video.attachment) %>" type="video/mp4", width="100%", height="100%" controls autobuffer></video>
+        </div>
+
+    <% end %>
+  </ul>
+<% end %>

@@ -34,5 +34,9 @@ module Cuoreverde
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    
+    # 標準時を日本時間に変更するため追記
+    config.i18n.default_locale = :ja 
+    config.time_zone = 'Tokyo'
   end
 end
