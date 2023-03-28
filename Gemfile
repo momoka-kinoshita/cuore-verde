@@ -49,3 +49,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # active storage AmazonS3
 gem 'aws-sdk-s3'
+
+group :production do
+  gem 'pg', '>= 0.18', '< 2.0'
+end
