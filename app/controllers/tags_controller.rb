@@ -5,7 +5,7 @@ class TagsController < ApplicationController
     @tag = Tag.new(tag_params)
     if @tag.save
       flash[:success] = 'タグ項目を追加しました。'
-      redirect_to request.referer
+      redirect_to new_post_url
     else
       flash.now[:danger] = 'タグ項目の追加に失敗しました。'
       render 'posts/new'
