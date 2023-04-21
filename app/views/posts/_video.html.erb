@@ -3,24 +3,29 @@
 <script>
 　$(function () {
     
-    // var num = 0;
+    let num = 0;
     
     // ここからfor文 videoの数（新たにモデルで作った値分）まわす
-    // var video = document.getElementById("video"+String(num));
-    var video0 = document.getElementById("video0");
-    var video1 = document.getElementById("video1");
+    let video = document.getElementById("video"+String(num));
     
-    video0.addEventListener("ended", function () {
+    console.log("log出力");
+    console.log("イベント外");
+    
+    video.addEventListener("ended", function () {
       
       $(this).hide();
       
       // id変換テスト
-      var num += 1;
+      // let num += 1;
+      video = document.getElementById("video"+String(num += 1));
       
-      // $("video"+String(num)).show();
-      $("video1").show();
+      console.log("log出力");
+      // console.log(num);
       
-      video1.play();
+      $("video"+String(num)).show();
+      // $("video1").show();
+      
+      video.play();
     });
     // ここまで
     
