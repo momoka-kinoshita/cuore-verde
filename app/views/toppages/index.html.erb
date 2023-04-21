@@ -251,6 +251,14 @@
   <% if @posts.blank? %>
     <p>条件に当てはまる投稿がありません</p>
   <% end %>
+  
+  <%= @count_video %>
+
+<!--動画連続再生テスト-->
+  <div>
+    <%= render 'posts/video', posts: @posts %>
+  </div>
+<!--ここまで-->
 
   <div>
     <%= render 'posts/posts', posts: @posts %>

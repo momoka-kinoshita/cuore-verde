@@ -5,6 +5,12 @@ class PostsController < ApplicationController
   
   def index
     @posts = Post.order(id: :desc)
+    
+    # 追記
+    # @video_sum = video_sum 
+    # puts UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
+    # puts @video_sum
+    # counts(@posts)
   end
 
   def show
@@ -66,4 +72,11 @@ class PostsController < ApplicationController
     end
   end
 
+
+  # def video_sum
+  #   @posts.each_with_index do |p,i|
+  #   end
+  #   return i
+  # end
+  
 end

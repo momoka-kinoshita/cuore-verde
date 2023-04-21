@@ -14,6 +14,8 @@ class ToppagesController < ApplicationController
            (params[:tag_id] - post.tags.pluck(:id)).blank?
          end
        end
+       
+      counts(@posts)
     end
   end
   
@@ -22,6 +24,11 @@ class ToppagesController < ApplicationController
   
   def post_params
     params.require(:post).permit(:maintitle, :memo, :video, tag_ids: [] )
+  end
+  
+  # 追記 連続再生テスト
+  def counts(post)
+    @count_video = @posts.count
   end
   
 end
