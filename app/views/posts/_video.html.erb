@@ -4,38 +4,46 @@
 　$(function () {
     
     let num = 0;
+    let roop = '<%== JSON.dump(@count_video) %>' - 1
+    alert(roop);
     
-    // ここからfor文 videoの数（新たにモデルで作った値分）まわす
-    let video = document.getElementById("video"+String(num));
+    while(num < roop){
+        let video = document.getElementById("video"+String(num));
+      
+        video.addEventListener("ended", function () {
+          
+          $(this).hide();
+          
+          // video = document.getElementById("video"+String(num += 1));
+          video = document.getElementById("video"+String(num + 1));
+          
+          $("video"+String(num)).show();
+          
+          video.play();
+        });
+        ++num;
+    }
+
+    // let num = 0;
     
-    console.log("log出力");
-    console.log("イベント外");
+    // for(let num = 0; num < 5 ; i++) {
+    // // ここからfor文 videoの数（新たにモデルで作った値分）まわす
+    //   let video = document.getElementById("video"+String(num));
+      
+    //   video.addEventListener("ended", function () {
+        
+    //     $(this).hide();
+        
+    //     // video = document.getElementById("video"+String(num += 1));
+    //     video = document.getElementById("video"+String(num + 1));
+        
+    //     $("video"+String(num)).show();
+        
+    //     video.play();
+    //   });
+    // // ここまで
+    // }
     
-    video.addEventListener("ended", function () {
-      
-      $(this).hide();
-      
-      // id変換テスト
-      // let num += 1;
-      video = document.getElementById("video"+String(num += 1));
-      
-      console.log("log出力");
-      // console.log(num);
-      
-      $("video"+String(num)).show();
-      // $("video1").show();
-      
-      video.play();
-    });
-    // ここまで
-    
-    
-    // video02の再生が終わった場合
-    // video02.addEventListener("ended", function () {
-    //   $(this).hide();
-    //   $(video01).show();
-    //   video01.play();
-    // });
   });
   
 </script>
@@ -46,7 +54,9 @@
   <ul class="list-unstyled mt-2">
     <% posts.each_with_index do |post, i| %>
       <% id_name = "video" + i.to_s %>
-      <video id="<%=id_name%>" src="<%= url_for(post.video.attachment) %>" type="video/mp4", width="100%", height="100%" controls autobuffer></video>
+      
+      <!--↓↓元は controls autobuffer のみ-->
+      <video id="<%=id_name%>" src="<%= url_for(post.video.attachment) %>" type="video/mp4", width="100%", height="100%" muted playsinline controls autobuffer></video>
       <p><%=id_name%></p>
     <% end %>
     
