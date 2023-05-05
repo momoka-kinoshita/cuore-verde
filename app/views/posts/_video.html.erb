@@ -3,46 +3,30 @@
 <script>
 　$(function () {
     
-    let num = 0;
     let roop = '<%== JSON.dump(@count_video) %>' - 1
-    alert(roop);
     
-    while(num < roop){
-        let video = document.getElementById("video"+String(num));
+    for (let num = 0; num < roop; num++) {
+    // ここからfor文 videoの数（新たにモデルで作った値分）まわす
+      let video = document.getElementById("video"+String(num));
       
-        video.addEventListener("ended", function () {
-          
-          $(this).hide();
-          
-          // video = document.getElementById("video"+String(num += 1));
-          video = document.getElementById("video"+String(num + 1));
-          
-          $("video"+String(num)).show();
-          
-          video.play();
-        });
-        ++num;
+      console.log(num);
+      console.log(video);
+      
+      video.addEventListener("ended", function () {
+        
+        $(this).hide();
+        
+        video = document.getElementById("video"+String(num += 1));
+        
+        $(video).show();
+        
+        video.play();
+        
+        console.log(num);
+        console.log(video);
+      });
+    // ここまで
     }
-
-    // let num = 0;
-    
-    // for(let num = 0; num < 5 ; i++) {
-    // // ここからfor文 videoの数（新たにモデルで作った値分）まわす
-    //   let video = document.getElementById("video"+String(num));
-      
-    //   video.addEventListener("ended", function () {
-        
-    //     $(this).hide();
-        
-    //     // video = document.getElementById("video"+String(num += 1));
-    //     video = document.getElementById("video"+String(num + 1));
-        
-    //     $("video"+String(num)).show();
-        
-    //     video.play();
-    //   });
-    // // ここまで
-    // }
     
   });
   
@@ -55,9 +39,14 @@
     <% posts.each_with_index do |post, i| %>
       <% id_name = "video" + i.to_s %>
       
-      <!--↓↓元は controls autobuffer のみ-->
-      <video id="<%=id_name%>" src="<%= url_for(post.video.attachment) %>" type="video/mp4", width="100%", height="100%" muted playsinline controls autobuffer></video>
-      <p><%=id_name%></p>
+      <% if i == 0 %>
+        <video id="<%=id_name%>" src="<%= url_for(post.video.attachment) %>" type="video/mp4", width="100%", height="100%" muted playsinline controls autobuffer metadata></video>
+        <P><%=id_name%>最初の動画です</P>    
+      <% else %>
+      　<video id="<%=id_name%>" src="<%= url_for(post.video.attachment) %>" type="video/mp4", width="100%", height="100%" muted playsinline controls autobuffer metadata style="display: none;"></video>
+        <P><%=id_name%>その後の動画です</P>
+      <% end %>
+      
     <% end %>
     
         <!--動画繰り返しテスト-->
