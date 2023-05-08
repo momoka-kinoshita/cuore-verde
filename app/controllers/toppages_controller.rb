@@ -26,7 +26,6 @@ class ToppagesController < ApplicationController
     params.require(:post).permit(:maintitle, :memo, :video, tag_ids: [] )
   end
   
-  # 追記 連続再生テスト
   def counts(post)
     @count_video = @posts.count
   end

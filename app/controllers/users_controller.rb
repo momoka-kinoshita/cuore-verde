@@ -9,6 +9,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.order(id: :desc)
     counts(@user)
+    
+    @count_video = @posts.count
   end
 
   def new
@@ -37,6 +39,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @likes = @user.likings.order(id: :desc)
     counts(@user)
+    
+    @count_video = @likes.count
   end
   
   
@@ -45,5 +49,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
+  
   
 end

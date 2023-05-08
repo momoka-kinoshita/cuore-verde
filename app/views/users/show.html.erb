@@ -5,5 +5,20 @@
     <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">投稿  <span class="badge bg-secondary"><%= @count_posts %></span></a></li>
     <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">お気に入り  <span class="badge bg-secondary"><%= @count_likings %></span></a></li>
   </ul>
+  
+  <!--ここから連続再生-->
+  <p class="mt-3">
+    <a class="btn btn-outline-secondary" data-bs-toggle="collapse" href="#collapseExample-row" role="button" aria-expanded="false" aria-controls="collapseExample-row">
+      動画を一気見する
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample-row">
+    <div class="card card-body">
+      <%= render 'posts/video', posts: @posts %>
+    </div>
+  </div>
+　<!--ここまで-->
+
+  
   <%= render 'posts/posts', posts: @posts %>
 </div>

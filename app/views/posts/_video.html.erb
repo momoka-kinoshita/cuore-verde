@@ -1,5 +1,3 @@
-ここから連続再生テスト
-
 <script>
 　$(function () {
     
@@ -9,8 +7,8 @@
     // ここからfor文 videoの数（新たにモデルで作った値分）まわす
       let video = document.getElementById("video"+String(num));
       
-      console.log(num);
-      console.log(video);
+      // console.log(num);
+      // console.log(video);
       
       video.addEventListener("ended", function () {
         
@@ -22,8 +20,8 @@
         
         video.play();
         
-        console.log(num);
-        console.log(video);
+        // console.log(num);
+        // console.log(video);
       });
     // ここまで
     }
@@ -40,29 +38,12 @@
       <% id_name = "video" + i.to_s %>
       
       <% if i == 0 %>
-        <video id="<%=id_name%>" src="<%= url_for(post.video.attachment) %>" type="video/mp4", width="100%", height="100%" muted playsinline controls autobuffer metadata></video>
-        <P><%=id_name%>最初の動画です</P>    
+        <video id="<%=id_name%>" src="<%= url_for(post.video.attachment) %>" type="video/mp4", width="100%", height="100%" playsinline controls autobuffer metadata></video>
       <% else %>
-      　<video id="<%=id_name%>" src="<%= url_for(post.video.attachment) %>" type="video/mp4", width="100%", height="100%" muted playsinline controls autobuffer metadata style="display: none;"></video>
-        <P><%=id_name%>その後の動画です</P>
+      　<video id="<%=id_name%>" src="<%= url_for(post.video.attachment) %>" type="video/mp4", width="100%", height="100%" playsinline controls autobuffer metadata style="display: none;"></video>
       <% end %>
       
     <% end %>
-    
-        <!--動画繰り返しテスト-->
-        <!--<div class="movie">-->
-        <!--  <video id="video01" poster="" autoplay muted playsinline controls metadata width="100%">-->
-        <!--    <source src="https://itsakura.com/wp-content/uploads/2018/03/test1.mp4" type="video/webm">-->
-        <!--    <p>動画が表示されない際のメッセージ.</p>-->
-        <!--  </video>-->
-        <!--</div>-->
-        
-        <!--<div class="movie">-->
-        <!--  <video id="video02" poster="" muted playsinline controls metadata width="100%" style="display: none;">-->
-        <!--    <source src="https://itsakura.com/wp-content/uploads/2018/03/test1.mp4" type="video/webm">-->
-        <!--    <p>動画が表示されない際のメッセージ.</p>-->
-        <!--  </video>-->
-        <!--</div>-->
         
   </ul>
 <% end %>

@@ -241,24 +241,38 @@
 　
 　
   
-  <span>【検索タグ】</span>
-  <% if @tags.present? %>
-    <% @tags.each do |tag| %>
-      <%= tag.name %>
+  <div>
+    【検索タグ】
+    <% if @tags.present? %>
+      <% @tags.each do |tag| %>
+        <%= tag.name %>
+      <% end %>
+    <% else %>
+      なし
     <% end %>
-  <% end %>
+  </div>
   
   <% if @posts.blank? %>
     <p>条件に当てはまる投稿がありません</p>
   <% end %>
   
-  <%= @count_video %>
-
-<!--動画連続再生テスト-->
   <div>
-    <%= render 'posts/video', posts: @posts %>
+    【動画】
+    <%= @count_video %> 件
   </div>
-<!--ここまで-->
+  
+  <!--ここから連続再生-->
+  <p class="mt-3">
+    <a class="btn btn-outline-secondary" data-bs-toggle="collapse" href="#collapseExample-row" role="button" aria-expanded="false" aria-controls="collapseExample-row">
+      動画を一気見する
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample-row">
+    <div class="card card-body">
+      <%= render 'posts/video', posts: @posts %>
+    </div>
+  </div>
+　<!--ここまで-->
 
   <div>
     <%= render 'posts/posts', posts: @posts %>
