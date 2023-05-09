@@ -12,7 +12,8 @@
       
       video.addEventListener("ended", function () {
         
-        $(this).hide();
+        // $(this).hide();
+        $(this).remove();
         
         video = document.getElementById("video"+String(num += 1));
         
