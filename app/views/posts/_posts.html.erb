@@ -1,3 +1,20 @@
+<style>
+  .postvideo {
+    position: relative;
+    width:100%; /* 横幅は100%にしておく */
+    height:0; /* 高さは0にしておく(padding-topで高さを指定するため) */
+    padding-top: 56.25%; /* 高さを指定(16:9) */
+  }
+  
+  .postvideo video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
 <% if posts.any? %>
 
   <ul class="list-unstyled mt-2">
@@ -13,8 +30,8 @@
           
         </div>
       
-        <div class="mb-4">
-          <video id="video" src="<%= url_for(post.video.attachment) %>" type="video/mp4", width="100%", height="100%" controls autobuffer></video>
+        <div class="mb-4 postvideo">
+          <video id="video" src="<%= url_for(post.video.attachment) %>" type="video/mp4", controls autobuffer></video>
         </div>
         
     <% end %>

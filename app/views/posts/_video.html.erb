@@ -32,17 +32,18 @@
 </script>
 
 
-
 <% if posts.any? %>
   <ul class="list-unstyled mt-2">
     <% posts.each_with_index do |post, i| %>
       <% id_name = "video" + i.to_s %>
       
-      <% if i == 0 %>
-        <video id="<%=id_name%>" src="<%= url_for(post.video.attachment) %>" type="video/mp4", width="100%", height="100%" playsinline controls autobuffer metadata></video>
-      <% else %>
-      　<video id="<%=id_name%>" src="<%= url_for(post.video.attachment) %>" type="video/mp4", width="100%", height="100%" playsinline controls autobuffer metadata style="display: none;"></video>
-      <% end %>
+      <div class="">
+        <% if i == 0 %>
+          <video id="<%=id_name%>" src="<%= url_for(post.video.attachment) %>" type="video/mp4", width="100%", height="100%" playsinline controls autobuffer metadata></video>
+        <% else %>
+        　<video id="<%=id_name%>" src="<%= url_for(post.video.attachment) %>" type="video/mp4", width="100%", height="100%" playsinline controls autobuffer metadata style="display: none;"></video>
+        <% end %>
+      </div>
       
     <% end %>
         
