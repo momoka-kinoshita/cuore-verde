@@ -17,3 +17,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # assets.rb
 # Rails.application.config.assets.precompile += %w( *.js )
 
+# JS追記
+Rails.application.config.assets.precompile += %w( *.js )
+
+Rails.application.config.assets.precompile += %w( application.css )

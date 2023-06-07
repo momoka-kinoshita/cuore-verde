@@ -19,3 +19,9 @@
 window.onload = function () {
 　alert("javascript test");
 };
+
+console.log('JavaScript test');
+
+$(function(){
+  console.log("テスト");
+});
