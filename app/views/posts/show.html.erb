@@ -1,8 +1,9 @@
 <h1>投稿詳細</h1>
 
 <%= link_to @post.user.name, user_path(@post.user), class: "text-decoration-none" %> <span class="text-muted"><%= l @post.created_at %></span>
-
-<video src="<%= url_for(@post.video.attachment) %>" type="video/mp4", width="100%", height="100%" controls autobuffer class="mb-2"></video>
+<div class="postvideo mb-4">
+  <video src="<%= url_for(@post.video.attachment) %>" type="video/mp4", width="100%", height="100%" controls autobuffer class="mb-2"></video>
+</div>
 <p>タイトル：<%= @post.maintitle %></p>
 <p>メモ：<%= @post.memo %></p>
 
