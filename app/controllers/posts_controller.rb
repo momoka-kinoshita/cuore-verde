@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:destroy, :edit, :update]
+  # before_action :correct_user, only: [:edit, :update]
 
   
   def index
@@ -34,7 +34,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = current_user.posts.find(params[:id])
+    @post = Post.find(params[:id])
     if @post.update(post_params)
       flash[:success] = '投稿は正常に更新されました。'
       redirect_to root_url
@@ -46,6 +46,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
     @post.destroy
     flash[:success] = '投稿を削除しました。'
     redirect_to root_url
